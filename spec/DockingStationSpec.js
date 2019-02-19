@@ -3,6 +3,7 @@
 describe('Docking Station', function() {
   let dockingstation;
   let bike;
+  let bike1;
 
   beforeEach(function() {
     dockingstation = new DockingStation();
@@ -19,10 +20,16 @@ describe('Docking Station', function() {
     });
 
     it('can check if a released bike is working', function() {
-      dockingstation.releaseBike(bike);
+      bike = dockingstation.releaseBike(bike);
       expect(bike.checkWorking()).toEqual(true);
     });
   });
 
-
+  describe('.dockBike(bike)', function() {
+    it('can release a bike', function() {
+      bike1 = dockingstation.releaseBike(bike);
+      dockingstation.dockBike(bike1);
+      expect(dockingstation.checkStorage()).toEqual([bike1]);
+    });
+  });
 });

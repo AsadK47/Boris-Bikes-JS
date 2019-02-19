@@ -9,7 +9,9 @@ describe('Docking Station', function() {
     bike = jasmine.createSpy('bike');
   });
 
-  it('can dock a bike', function() {
-    expect(dockingstation.releaseBike(bike)).toEqual(bike);
+  describe('.releaseBike(bike)', function() {
+    it('can dock a bike', function() {
+      expect(dockingstation.releaseBike(bike)).toEqual(bike);
+    });
   });
 });

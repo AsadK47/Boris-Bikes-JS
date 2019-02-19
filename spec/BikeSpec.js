@@ -7,7 +7,9 @@ describe('Bike', function() {
     bike = new Bike();
   });
 
-  it('checks if a bike is working', function() {
-    expect(bike.checkWorking()).toEqual(true)
-  });
+  describe('.checkWorking()', function() {
+    it('checks if a bike is in a working condition', function() {
+      expect(bike.checkWorking()).toEqual(true)
+    });
+  })
 });

@@ -6,10 +6,10 @@ describe('Docking Station', function() {
 
   beforeEach(function() {
     dockingstation = new DockingStation();
-    bike = jasmine.createSpy('bike')
+    bike = jasmine.createSpy('bike');
   });
 
   it('can dock a bike', function() {
-    expect(dockingstation.releaseBike(bike)).toEqual(bike)
+    expect(dockingstation.releaseBike(bike)).toEqual(bike);
   });
 });

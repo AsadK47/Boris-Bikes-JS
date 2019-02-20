@@ -1,12 +1,13 @@
 'use strict';
 
 function DockingStation() {
+  this.DEFAULT_CAPACITY = 5;
   this.storedBikes = [];
 }
 
 DockingStation.prototype.dockBike = function(bike) {
-  if (this.storedBikes.length === 5) {
-    throw new Error('bike storage is full')
+  if (this.storedBikes.length === this.DEFAULT_CAPACITY) {
+    throw new Error('bike storage is full');
   }
   this.storedBikes.push(bike);
   return bike;

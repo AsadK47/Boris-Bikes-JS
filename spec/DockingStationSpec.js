@@ -13,9 +13,22 @@ describe('Docking Station', function() {
     };
   });
 
+  function defaultCapacity(bike) {
+    var times = 5;
+    var i = 0;
+    for(i; i < times; i++) {
+      dockingstation.dockBike(bike);
+    }
+  }
+
   describe('.dockBike(bike)', function() {
     it('can dock a bike', function() {
       expect(dockingstation.dockBike(bike)).toEqual(bike);
+    });
+
+    it('raises an error if the dockingstation cannot accept more bikes', function() {
+      defaultCapacity(bike);
+      expect(function() { dockingstation.dockBike(bike); }).toThrowError('bike storage is full')
     });
   });
 

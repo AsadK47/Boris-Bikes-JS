@@ -6,7 +6,7 @@ function DockingStation() {
 }
 
 DockingStation.prototype.dockBike = function(bike) {
-  if (this.storedBikes.length === this.DEFAULT_CAPACITY) {
+  if (this._fullCapacity()) {
     throw new Error('bike storage is full');
   }
   this.storedBikes.push(bike);
@@ -23,4 +23,8 @@ DockingStation.prototype.releaseBike = function(bike) {
 
 DockingStation.prototype.checkStorage = function() {
   return this.storedBikes;
+}
+
+DockingStation.prototype._fullCapacity = function() {
+  return this.storedBikes.length === this.DEFAULT_CAPACITY
 }

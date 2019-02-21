@@ -59,6 +59,6 @@ describe('Docking Station', function() {
       dockingstation.dockBike(bike);
       dockingstation.releaseBike(bike);
       expect(dockingstation.checkStorage()).toEqual([]);
-    })
-  })
+    });
+  });
 });

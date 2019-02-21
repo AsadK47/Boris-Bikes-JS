@@ -6,7 +6,7 @@ function DockingStation() {
 }
 
 DockingStation.prototype.dockBike = function(bike) {
-  if (this._fullCapacity()) {
+  if (this._storageIsFull()) {
     throw new Error('bike storage is full');
   }
   this.storedBikes.push(bike);
@@ -14,7 +14,7 @@ DockingStation.prototype.dockBike = function(bike) {
 }
 
 DockingStation.prototype.releaseBike = function(bike) {
-  if (this.storedBikes.length === 0) {
+  if (this._storageIsEmpty()) {
     throw new Error('bike storage is empty')
   }
   this.storedBikes.pop();
@@ -25,6 +25,10 @@ DockingStation.prototype.checkStorage = function() {
   return this.storedBikes;
 }
 
-DockingStation.prototype._fullCapacity = function() {
+DockingStation.prototype._storageIsFull = function() {
   return this.storedBikes.length === this.DEFAULT_CAPACITY
+}
+
+DockingStation.prototype._storageIsEmpty = function() {
+  return this.storedBikes.length === 0
 }

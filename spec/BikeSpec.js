@@ -9,7 +9,14 @@ describe('Bike', function() {
 
   describe('.checkWorking()', function() {
     it('checks if a bike is in a working condition', function() {
-      expect(bike.checkWorking()).toEqual(true)
+      expect(bike.checkStatus()).toEqual(true)
     });
-  })
+  });
+
+  describe('.reportBroken()', function() {
+    it('changes a bikes status to broken', function() {
+      bike.reportBroken();
+      expect(bike.checkStatus()).toEqual(false);
+    });
+  });
 });

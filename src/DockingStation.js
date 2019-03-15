@@ -16,7 +16,9 @@ DockingStation.prototype.dockBike = function(bike) {
 DockingStation.prototype.releaseBike = function(bike) {
   if (this._storageIsEmpty()) {
     throw new Error('bike storage is empty')
-  }
+  } else if (bike.checkStatus() === false) {
+    throw new Error('sorry, this bike is broken')
+  };
   this.storedBikes.pop();
   return bike;
 };

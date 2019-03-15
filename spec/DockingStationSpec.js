@@ -3,12 +3,18 @@
 describe('Docking Station', function() {
   let dockingstation;
   let bike;
+  let bike2;
 
   beforeEach(function() {
     dockingstation = new DockingStation();
     bike = {
-      checkWorking: function() {
+      checkStatus: function() {
         return true;
+      }
+    };
+    bike2 = {
+      checkStatus: function() {
+        return false;
       }
     };
   });
@@ -45,7 +51,12 @@ describe('Docking Station', function() {
     it('can check if a released bike is working', function() {
       dockingstation.dockBike(bike)
       bike = dockingstation.releaseBike(bike);
-      expect(bike.checkWorking()).toEqual(true);
+      expect(bike.checkStatus()).toEqual(true);
+    }); // check this in a second
+
+    it('fails to release a broken bike', function() {
+      dockingstation.dockBike(bike2)
+      expect(function() { dockingstation.releaseBike(bike2); }).toThrowError('sorry, this bike is broken')
     });
   });
 
